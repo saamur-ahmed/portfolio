@@ -1,67 +1,160 @@
+:root{
+  --bg1: #1e3c72;
+  --bg2: #2a5298;
+  --card-bg: rgba(255,255,255,0.95);
+  --text: #1b1f23;
+  --muted: #586069;
+  --brand: #1e3c72;
+  --brand-700: #16325c;
+  --ring: #5b9dff;
+  --shadow: 0 12px 40px rgba(0,0,0,0.25);
+}
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+@media (prefers-color-scheme: dark){
+  :root{
+    --card-bg: rgba(17, 25, 40, 0.75);
+    --text: #e6edf3;
+    --muted: #9aa6b2;
+    --brand: #9dc1ff;
+    --brand-700: #7aa5ff;
+    --ring: #9dc1ff;
+    --shadow: 0 12px 40px rgba(0,0,0,0.5);
   }
-  
-  body, html {
-    height: 100%;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  
-  
-  .hero {
-    background: linear-gradient(135deg, #1e3c72, #2a5298);
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
-  }
-  
-  
-  .card {
-    background: rgba(255, 255, 255, 0.95);
-    padding: 50px;
-    border-radius: 16px;
-    text-align: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    max-width: 400px;
-    color: #333;
-  }
-  
-  h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-    color: #1e3c72;
-  }
-  
-  .tagline {
-    font-size: 1.2rem;
-    margin-bottom: 8px;
-    color: #555;
-  }
-  
-  .interest {
-    font-size: 1rem;
-    margin-bottom: 20px;
-    color: #666;
-  }
-  
-  
-  .buttons .btn {
-    display: inline-block;
-    margin: 10px 8px 0;
-    padding: 12px 20px;
-    font-size: 1rem;
-    text-decoration: none;
-    color: white;
-    background-color: #1e3c72;
-    border-radius: 8px;
-    transition: background 0.3s ease;
-  }
-  
-  .buttons .btn:hover {
-    background-color: #16325c;
-  }
+}
+
+*{ box-sizing: border-box; }
+html, body{ height: 100%; }
+body{
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, sans-serif;
+  color: var(--text);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+
+.hero{
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: clamp(16px, 4vw, 40px);
+  background: linear-gradient(135deg, var(--bg1), var(--bg2));
+  background-size: 200% 200%;
+  animation: bgShift 18s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .hero{ animation: none; }
+}
+
+@keyframes bgShift{
+  0%{ background-position: 0% 50%; }
+  50%{ background-position: 100% 50%; }
+  100%{ background-position: 0% 50%; }
+}
+
+
+.card{
+  width: min(720px, 100%);
+  background: var(--card-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 20px;
+  padding: clamp(24px, 5vw, 44px);
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+
+h1{
+  font-size: clamp(1.9rem, 4.5vw, 2.6rem);
+  line-height: 1.1;
+  margin: 0 0 8px;
+}
+.tagline{
+  font-size: clamp(1.05rem, 2.3vw, 1.2rem);
+  color: var(--brand);
+  margin-bottom: 4px;
+}
+.interest{
+  font-size: clamp(0.95rem, 2.2vw, 1.05rem);
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+.about{
+  font-size: clamp(1rem, 2.4vw, 1.05rem);
+  color: var(--text);
+  margin: 0 auto 18px;
+  max-width: 60ch;
+}
+
+
+.buttons{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 8px;
+}
+.btn{
+  --pad-x: 18px;
+  --pad-y: 12px;
+  display: inline-block;
+  padding: var(--pad-y) var(--pad-x);
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1;
+  background: var(--brand);
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  transition: transform .15s ease, box-shadow .2s ease, background .2s ease, outline-offset .15s ease;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+.btn:hover{
+  transform: translateY(-1px);
+  background: var(--brand-700);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.18);
+}
+.btn:active{ transform: translateY(0); }
+.btn:focus-visible{
+  outline-color: var(--ring);
+  outline-offset: 3px;
+}
+
+
+.btn--secondary{
+  background: transparent;
+  color: var(--brand);
+  border: 2px solid var(--brand);
+}
+.btn--secondary:hover{
+  background: color-mix(in oklab, var(--brand) 12%, #fff);
+}
+
+.btn--ghost{
+  background: transparent;
+  color: var(--text);
+  border: 2px solid transparent;
+}
+.btn--ghost:hover{
+  border-color: var(--brand);
+  color: var(--brand);
+}
+
+
+.footer{
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  color: #ffffffcc;
+  font-size: 0.9rem;
+}
+
+
+@media (max-width: 380px){
+  .buttons .btn{ font-size: 0.95rem; padding: 10px 14px; }
+}
