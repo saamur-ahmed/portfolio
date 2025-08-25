@@ -2,20 +2,48 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Saamur Ahmed's Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Saamur Ahmed — Portfolio</title>
+  <meta name="description" content="Saamur Ahmed — Computer Science student at UofT. Interests in Machine Learning, drones, and building useful software." />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="hero">
-    <div class="card">
-      <h1>Saamur Ahmed</h1>
-      <p class="tagline">Computer Science Student @ UofT</p>
-      <p class="interest">Passionate about Machine Learning & Drones</p>
-      <div class="buttons">
-        <a href="https://www.linkedin.com/in/saamur-ahmed-32a130292" target="_blank" class="btn">💼 LinkedIn</a>
-      </div>
-    </div>
-  </div>
+  <main class="hero" role="main">
+    <article class="card" aria-label="Intro card">
+      <header>
+        <h1>Saamur Ahmed</h1>
+        <p class="tagline">Computer Science @ U of T</p>
+        <p class="interest">Machine Learning • Drones • Building useful software</p>
+      </header>
+
+      <p class="about">
+        I’m a Computer Science student who enjoys turning ideas into things people can use.
+        Recently I’ve been deepening my skills in data structures, algorithms, and systems—
+        and exploring ML projects that bridge theory with hands-on engineering. I’m actively
+        preparing for software development internships and I love teams that value curiosity,
+        clear code, and thoughtful shipping.
+      </p>
+
+      <nav class="buttons" aria-label="Primary links">
+        <a class="btn" href="https://www.linkedin.com/in/saamur-ahmed-32a130292" target="_blank" rel="noopener" aria-label="Open LinkedIn profile">
+          💼 LinkedIn
+        </a>
+        <a class="btn btn--secondary" href="saamur19ua@gmail.com" aria-label="Send me an email">
+          ✉️ Email
+        </a>
+        <!--resume.pdf  -->
+        <!--  -->
+      </nav>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <small>&copy; <span id="year"></span> Saamur Ahmed</small>
+  </footer>
+
+  <script>
+    
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
