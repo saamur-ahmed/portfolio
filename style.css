@@ -8,6 +8,8 @@
   --brand-700: #16325c;
   --ring: #5b9dff;
   --shadow: 0 12px 40px rgba(0,0,0,0.25);
+  --surface: #ffffff;
+  --border: rgba(0,0,0,0.08);
 }
 
 @media (prefers-color-scheme: dark){
@@ -19,6 +21,8 @@
     --brand-700: #7aa5ff;
     --ring: #9dc1ff;
     --shadow: 0 12px 40px rgba(0,0,0,0.5);
+    --surface: #0b1220;
+    --border: rgba(255,255,255,0.08);
   }
 }
 
@@ -31,6 +35,7 @@ body{
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  background: var(--surface);
 }
 
 
@@ -43,17 +48,12 @@ body{
   background-size: 200% 200%;
   animation: bgShift 18s ease-in-out infinite;
 }
-
-@media (prefers-reduced-motion: reduce){
-  .hero{ animation: none; }
-}
-
+@media (prefers-reduced-motion: reduce){ .hero{ animation: none; } }
 @keyframes bgShift{
   0%{ background-position: 0% 50%; }
   50%{ background-position: 100% 50%; }
   100%{ background-position: 0% 50%; }
 }
-
 
 .card{
   width: min(720px, 100%);
@@ -70,6 +70,14 @@ body{
 h1{
   font-size: clamp(1.9rem, 4.5vw, 2.6rem);
   line-height: 1.1;
+  margin: 0 0 8px;
+}
+h2{
+  font-size: clamp(1.4rem, 3.2vw, 1.8rem);
+  margin: 0 0 12px;
+}
+h3{
+  font-size: clamp(1.05rem, 2.4vw, 1.2rem);
   margin: 0 0 8px;
 }
 .tagline{
@@ -113,6 +121,8 @@ h1{
   transition: transform .15s ease, box-shadow .2s ease, background .2s ease, outline-offset .15s ease;
   outline: 2px solid transparent;
   outline-offset: 2px;
+  border: 0;
+  cursor: pointer;
 }
 .btn:hover{
   transform: translateY(-1px);
@@ -124,8 +134,6 @@ h1{
   outline-color: var(--ring);
   outline-offset: 3px;
 }
-
-
 .btn--secondary{
   background: transparent;
   color: var(--brand);
@@ -134,7 +142,6 @@ h1{
 .btn--secondary:hover{
   background: color-mix(in oklab, var(--brand) 12%, #fff);
 }
-
 .btn--ghost{
   background: transparent;
   color: var(--text);
@@ -144,6 +151,82 @@ h1{
   border-color: var(--brand);
   color: var(--brand);
 }
+.btn--small{
+  --pad-x: 14px;
+  --pad-y: 9px;
+  font-size: 0.95rem;
+}
+
+
+.section{
+  padding: clamp(28px, 6vw, 64px) 16px;
+  background: var(--surface);
+}
+.container{
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+
+.projects-grid{
+  display: grid;
+  grid-template-columns: repeat( auto-fit, minmax(260px, 1fr) );
+  gap: 16px;
+  margin-top: 18px;
+}
+.project-card{
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 18px;
+  background: color-mix(in oklab, var(--surface) 86%, white);
+}
+.project-header{
+  display: flex; align-items: center; justify-content: space-between;
+}
+.project-text{ color: var(--muted); margin: 8px 0 14px; }
+.project-actions{ display: flex; gap: 10px; }
+
+
+.about-dialog{
+  border: none;
+  padding: 0;
+  background: transparent;
+}
+.about-dialog::backdrop{
+  background: rgba(0,0,0,0.5);
+}
+.about-sheet{
+  background: var(--surface);
+  color: var(--text);
+  width: min(900px, 92vw);
+  margin: 10vh auto 0;
+  border-radius: 20px;
+  padding: clamp(16px, 4vw, 28px);
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 18px;
+  position: relative;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+@media (max-width: 640px){
+  .about-sheet{ grid-template-columns: 1fr; }
+}
+.about-photo{
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 14px;
+}
+.about-copy p{ margin: 0; }
+.close{
+  position: absolute;
+  right: 10px; top: 10px;
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 0; cursor: pointer; background: transparent; color: var(--muted);
+  font-size: 26px; line-height: 1;
+}
+.close:hover{ color: var(--text); }
 
 
 .footer{
@@ -152,8 +235,8 @@ h1{
   padding: 16px;
   color: #ffffffcc;
   font-size: 0.9rem;
+  background: linear-gradient(135deg, var(--bg1), var(--bg2));
 }
-
 
 @media (max-width: 380px){
   .buttons .btn{ font-size: 0.95rem; padding: 10px 14px; }

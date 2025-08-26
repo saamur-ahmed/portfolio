@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  
   <main class="hero" role="main">
     <article class="card" aria-label="Intro card">
       <header>
@@ -25,25 +26,103 @@
       </p>
 
       <nav class="buttons" aria-label="Primary links">
+        <button class="btn btn--ghost" id="open-about" aria-haspopup="dialog" aria-controls="about-dialog">
+          ℹ️ About
+        </button>
         <a class="btn" href="https://www.linkedin.com/in/saamur-ahmed-32a130292" target="_blank" rel="noopener" aria-label="Open LinkedIn profile">
           💼 LinkedIn
         </a>
-        <a class="btn btn--secondary" href="saamur19ua@gmail.com" aria-label="Send me an email">
+        <a class="btn btn--secondary" href="mailto:saamur19ua@gmail.com" aria-label="Send me an email">
           ✉️ Email
         </a>
-        <!--resume.pdf  -->
-        <!--  -->
       </nav>
     </article>
   </main>
 
+  <!-- PROJECTS -->
+  <section class="section" id="projects" aria-labelledby="projects-title">
+    <div class="container">
+      <h2 id="projects-title">Projects</h2>
+
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <article class="project-card">
+          <div class="project-header">
+            <h3>UofT Webring</h3>
+          </div>
+          <p class="project-text">
+            A simple, privacy-friendly webring for UofT students to discover each other’s personal sites.
+            Built with lightweight HTML/CSS/JS, no tracking, and easy one-line install.
+          </p>
+          <div class="project-actions">
+            <a class="btn btn--small" href="#" aria-label="Open UofT Webring demo">Live</a>
+            <a class="btn btn--secondary btn--small" href="#" aria-label="Open UofT Webring source code">Code</a>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="project-card">
+          <div class="project-header">
+            <h3>Music Sequencer in C</h3>
+          </div>
+          <p class="project-text">
+            CLI tool in C that sequences user-entered notes/frequencies, using dynamic arrays,
+            linked lists, and BSTs for fast insert/search. Focus on clean abstractions and tests.
+          </p>
+          <div class="project-actions">
+            <a class="btn btn--small" href="#" aria-label="Open Music Sequencer demo">Demo</a>
+            <a class="btn btn--secondary btn--small" href="#" aria-label="Open Music Sequencer source code">Code</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT DIALOG -->
+  <dialog id="about-dialog" class="about-dialog" aria-label="About Saamur">
+    <form method="dialog" class="about-sheet">
+      <button class="close" aria-label="Close about dialog">×</button>
+
+      <img src="profpic.jpg" alt="Saamur Ahmed in Toronto" class="about-photo" />
+
+      <div class="about-copy">
+        <h2>About me</h2>
+        <p>
+          I am a computer science student at University of Toronto who loves to build and enjoys
+          turning ideas into things people can use. Recently I’ve been deepening my skills in data
+          structures, algorithms, and systems and exploring projects that bridge theory with hands-on
+          engineering. I’m actively preparing for software development internships and I love teams
+          that value curiosity, clear code, and thoughtful shipping. Along with this I have a keen
+          interest in Robotics, in particular in Specialized Drones.
+        </p>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- FOOTER -->
   <footer class="footer">
     <small>&copy; <span id="year"></span> Saamur Ahmed</small>
   </footer>
 
   <script>
-    
+    // year
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // about dialog
+    const dlg = document.getElementById('about-dialog');
+    const openBtn = document.getElementById('open-about');
+    const closeBtn = dlg.querySelector('.close');
+
+    function openAbout() { dlg.showModal(); }
+    function closeAbout() { dlg.close(); }
+
+    openBtn.addEventListener('click', openAbout);
+    closeBtn.addEventListener('click', closeAbout);
+    dlg.addEventListener('click', (e) => {
+      // click outside sheet closes
+      const sheet = dlg.querySelector('.about-sheet');
+      if (!sheet.contains(e.target)) closeAbout();
+    });
   </script>
 </body>
 </html>
