@@ -1,76 +1,108 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Saamur Ahmed — Portfolio</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="style.css?v=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#">Saamur Ahmed</a>
+      <nav class="nav">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a class="btn" href="mailto:saamur.ahmed@mail.utoronto.ca">Email Me</a>
+      </nav>
+    </div>
+  </header>
 
+ 
   <section class="hero">
-    <div class="card">
-      <h1>Saamur Ahmed</h1>
-      <p class="tagline">Computer Science Student • University of Toronto</p>
-      <a href="mailto:saamur@example.com" class="btn" aria-label="Email Saamur">Email Me</a>
+    <div class="container">
+      <div class="card hero-card">
+        <div class="hero-text">
+          <h1>Computer Science Student • University of Toronto</h1>
+          <p class="lead">
+            I love building things people can use and turning ideas into reality.
+            Lately I’ve been deepening my skills in data structures, algorithms, and systems,
+            and exploring projects that bridge theory with hands-on engineering.
+            I’m actively preparing for software development internships and I value teams
+            that prize curiosity, clear code, and thoughtful shipping.
+          </p>
+          <div class="cta-row">
+            <a class="btn" href="mailto:saamur.ahmed@mail.utoronto.ca">Email Me</a>
+            <a class="btn ghost" href="#projects">See Projects</a>
+          </div>
+        </div>
+        <img class="hero-img" src="profpic.jpg" alt="Portrait of Saamur Ahmed" />
+      </div>
+    </div>
+  </section>
+
+
+  <section id="about" class="section">
+    <div class="container">
+      <div class="card">
+        <h2>About Me</h2>
+        <p>
+          I’m a computer science student at the University of Toronto who enjoys shipping clean,
+          useful software. I’m especially interested in Robotics—particularly specialized drones.
+          Outside class, I work on projects that push my understanding of systems and performance.
+        </p>
+      </div>
     </div>
   </section>
 
  
-  <section class="about section">
+  <section id="projects" class="section">
     <div class="container">
-      <div class="card" tabindex="0">
-        <h2>About Me</h2>
-        <p>
-          I am a computer science student at University of Toronto who loves to build and enjoys turning ideas
-          into things people can use. Recently I’ve been deepening my skills in data structures, algorithms, and
-          systems and exploring projects that bridge theory with hands-on engineering. I’m actively preparing for
-          software development internships and I love teams that value curiosity, clear code, and thoughtful shipping.
-          Along with this I have a keen interest in Robotics, in particular in Specialized Drones.
-        </p>
-        <img src="profpic.jpg" alt="Profile picture of Saamur" class="profile-pic" />
-      </div>
-    </div>
-  </section>
+      <h2 class="section-title">Projects</h2>
 
-
-  <section class="projects section">
-    <div class="container">
-      <div class="card">
-        <h2>Projects</h2>
-
-        <ul class="projects-list">
-          <li class="project">
+      <div class="grid">
+        
+        <article class="card project">
+          <div class="project-body">
             <h3>UofT Webring</h3>
             <p>
-              A simple webring connecting University of Toronto student sites. Focused on clean markup and easy
-              onboarding for new members.
+              A simple webring that links student portfolios across UofT.
+              Built with lightweight HTML/CSS/JS, accessible design, and zero backend.
             </p>
-            <div class="tags">
-              <span class="tag">HTML/CSS</span>
-              <span class="tag">JavaScript</span>
-            </div>
-          </li>
+          </div>
+          <div class="project-meta">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JS</span>
+          </div>
+        </article>
 
-          <li class="project">
+       
+        <article class="card project">
+          <div class="project-body">
             <h3>Music Sequencer in C</h3>
             <p>
-              Console-based sequencer where users input notes/frequencies; uses linked lists &amp; BSTs to manage tracks
-              and playback order.
+              Console-based sequencer that parses note & frequency input, schedules playback,
+              and manages tracks using linked lists and binary search trees.
             </p>
-            <div class="tags">
-              <span class="tag">C</span>
-              <span class="tag">Data Structures</span>
-            </div>
-          </li>
-        </ul>
+          </div>
+          <div class="project-meta">
+            <span class="tag">C</span>
+            <span class="tag">Data Structures</span>
+          </div>
+        </article>
       </div>
     </div>
   </section>
 
-  <footer class="footer">
-    © <span id="year"></span> Saamur Ahmed
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Saamur Ahmed</p>
+    </div>
   </footer>
 
   <script>
@@ -79,3 +111,4 @@
   </script>
 </body>
 </html>
+
